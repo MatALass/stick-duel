@@ -3,7 +3,7 @@
 [![CI](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml/badge.svg)](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](#installation)
 [![Pygame](https://img.shields.io/badge/pygame-2.6%2B-green.svg)](#installation)
-[![Coverage](https://img.shields.io/badge/tested-24%20tests-success.svg)](#testing)
+[![Coverage](https://img.shields.io/badge/tested-27%20tests-success.svg)](#testing)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](#license)
 
 Local 1v1 fighting game built with **Python** and **Pygame**, designed as both a **playable prototype** and a **software engineering project** focused on modular architecture, finite state machines, scene orchestration, and testable combat logic.
