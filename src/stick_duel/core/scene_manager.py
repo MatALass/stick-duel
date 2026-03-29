@@ -16,12 +16,7 @@ class SceneManager:
         self._registry[name] = scene_class
 
     def go_to(self, name: str, payload: dict[str, Any] | None = None) -> None:
-        try:
-            scene_class = self._registry[name]
-            self.current = scene_class(self.game)
-            self.current_name = name
-            self.current.enter(payload or {})
-        except Exception as e:
-            print("SCENE ERROR:", name)
-            print(repr(e))
-            raise
+        scene_class = self._registry[name]
+        self.current = scene_class(self.game)
+        self.current_name = name
+        self.current.enter(payload or {})

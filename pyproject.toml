@@ -5,11 +5,20 @@ description = "Local multiplayer fighting game built with Pygame"
 authors = [{ name = "Mathieu" }]
 readme = "README.md"
 requires-python = ">=3.11"
-
 dependencies = [
-    "pygame>=2.6.0"
+    "pygame>=2.6.0",
 ]
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

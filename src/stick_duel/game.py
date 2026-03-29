@@ -33,13 +33,13 @@ class Game:
         self.scene_manager.go_to("menu")
 
     def apply_result(self, result):
-        if result:
-            print("SWITCH TO:", result.next_scene)
         if result is None:
             return
+
         if result.quit_game:
             self.running = False
             return
+
         if result.next_scene is not None:
             self.scene_manager.go_to(result.next_scene, result.payload)
 
