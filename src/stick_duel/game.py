@@ -4,7 +4,6 @@ import pygame
 
 from stick_duel.asset_loader import AssetLoader
 from stick_duel.config import SCREEN_HEIGHT, SCREEN_WIDTH, TARGET_FPS
-from stick_duel.core.scene import SceneResult
 from stick_duel.core.scene_manager import SceneManager
 from stick_duel.scenes.controls_scene import ControlsScene
 from stick_duel.scenes.game_scene import GameScene

@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import math
@@ -9,7 +8,7 @@ from stick_duel.combat.attack_data import AttackData
 from stick_duel.combat.attacks import Projectile
 from stick_duel.combat.damage import apply_damage
 from stick_duel.config import ASSETS_DIR
-from stick_duel.constants import DEFAULT_STOCKS, FAST_FALL, GROUND_Y
+from stick_duel.constants import DEFAULT_STOCKS, FAST_FALL, GROUND_Y, WHITE
 from stick_duel.core.state_machine import StateMachine
 from stick_duel.core.timer import Cooldown
 from stick_duel.entities.animation import Animation

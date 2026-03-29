@@ -3,221 +3,242 @@
 [![CI](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml/badge.svg)](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](#installation)
 [![Pygame](https://img.shields.io/badge/pygame-2.6%2B-green.svg)](#installation)
-[![Status](https://img.shields.io/badge/status-playable-success.svg)](#features)
+[![Coverage](https://img.shields.io/badge/tested-24%20tests-success.svg)](#testing)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](#license)
 
-A local 1v1 fighting game built with **Python** and **Pygame**, designed with a strong focus on **clean architecture**, **finite state machines**, and **game feel**.
-
-> Stick Duel is not just a playable game prototype. It is also an engineering project built to demonstrate modular design, extensibility, and maintainability in a real-time gameplay system.
+Local 1v1 fighting game built with **Python** and **Pygame**, designed as both a **playable prototype** and a **software engineering project** focused on modular architecture, finite state machines, scene orchestration, and testable combat logic.
 
 ---
 
-## Table of Contents
+## Why this project stands out
 
-- [Overview](#overview)
-- [Why this project matters](#why-this-project-matters)
-- [Features](#features)
-- [Gameplay Overview](#gameplay-overview)
-- [Controls](#controls)
-- [Characters](#characters)
-- [Screenshots and Demo](#screenshots-and-demo)
-- [Technical Highlights](#technical-highlights)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Run the Game](#run-the-game)
-- [Run the Tests](#run-the-tests)
-- [Release Notes](#release-notes)
-- [Roadmap](#roadmap)
-- [Known Limitations](#known-limitations)
-- [Repository Metadata](#repository-metadata)
-- [License](#license)
+A lot of small Pygame games are playable, but structurally weak: gameplay, rendering, transitions, combat, and UI often end up mixed together in a single loop that becomes hard to test, hard to extend, and hard to maintain.
+
+**Stick Duel** was built to avoid that.
+
+This repository demonstrates:
+
+- a clean **src-layout Python package**
+- a **scene-driven game flow**
+- **FSM-based fighter behavior**
+- separated combat and effects systems
+- automated tests for both logic and match flow
+- CI-backed quality checks with linting and coverage
+
+The point of the project is not only to show that the game works, but that the codebase is organized to evolve cleanly.
 
 ---
 
-## Overview
+## Demo
 
-Stick Duel is a two-player local fighting game featuring melee and ranged combat, hit reactions, knockback, screen feedback, and a scene-driven game loop.
+### Core match flow
 
-The project is structured as a **modular game codebase**, with dedicated layers for:
+1. Open the main menu
+2. Review the controls
+3. Go to the player setup screen
+4. Choose fighters and player names
+5. Launch the match
+6. Trade melee and projectile attacks
+7. Win by exhausting the opponent's stocks
+8. Transition to the victory scene
 
-- scene management
-- combat logic
-- fighter entities
-- state machines
-- effects and feedback
-- UI components
+### Screenshots
 
-This makes the project suitable both as a playable game and as a portfolio-grade example of Python software engineering applied to game development.
+Replace or extend these with your final visuals and gameplay GIF:
 
----
+![Menu](assets/screenshots/menu.png)
+![Setup](assets/screenshots/setup.png)
+![Gameplay](assets/screenshots/game.png)
 
-## Why this project matters
-
-Many small Pygame projects work as demos but remain difficult to scale, test, or extend. Stick Duel is intentionally structured to avoid that trap.
-
-This repository aims to demonstrate:
-
-- a **src-layout Python package**
-- clear separation between **runtime orchestration** and **gameplay logic**
-- explicit **scene transitions**
-- **FSM-based** fighter behavior
-- isolated, testable combat mechanics
-- a foundation that can evolve toward AI opponents, richer combat systems, and improved production quality
+**Recommended improvement:** add a short gameplay GIF near the top of the README for stronger recruiter impact.
 
 ---
 
-## Features
+## Gameplay features
 
-### Gameplay
-
+### Combat
 - Local 1v1 combat
 - Melee attacks with startup, active, and recovery phases
-- Ranged attacks for projectile-capable fighters
-- Knockback and hit detection
+- Projectile attacks for ranged fighters
+- Knockback and hit reactions
 - Stock-based win condition
-- Pause support during matches
+- Pause / resume support during matches
 
-### Game Feel
-
+### Game feel
 - Hit freeze
 - Screen shake
 - Impact particles
-- Visual hit feedback
-- Fighter flash / respawn feedback
+- Damage feedback
+- Respawn feedback
 
-### Engineering
-
-- Finite State Machine based fighter logic
-- Modular scene system
-- Dedicated combat and entity modules
-- Testable core behavior
-- Package-based installation
-
----
-
-## Gameplay Overview
-
-A typical match flow is:
-
-1. Open the menu
-2. Go to the player setup screen
-3. Select fighters and player names
-4. Start the match
-5. Fight until one player runs out of stocks
-6. Transition to the victory scene
-
-This explicit scene-driven flow is one of the strong architectural points of the project.
-
----
-
-## Controls
-
-### Player 1 (AZERTY)
-
-- `Q` / `D` → Move
-- `Z` → Jump
-- `S` → Fast fall
-- `F` → Melee
-- `G` → Ranged
-
-### Player 2
-
-- `←` / `→` → Move
-- `↑` → Jump
-- `↓` → Fast fall
-- `Enter` → Melee
-- `Right Shift` → Ranged
-
-### In Match
-
-- `Esc` → Pause / resume
+### Match flow
+- Menu scene
+- Controls scene
+- Player setup scene
+- Game scene
+- Victory scene
 
 ---
 
 ## Characters
 
 ### Swordsman
-
-- Strong melee profile
-- Higher close-range pressure
-- No ranged attack
+- stronger melee profile
+- higher close-range pressure
+- no projectile
 
 ### Archer
-
-- Lower direct melee pressure
-- Projectile-based spacing
-- Better ranged control
-
----
-
-## Screenshots and Demo
-
-![Menu](assets/screenshots/menu.png)
-![Setup](assets/screenshots/setup.png)
-![Gameplay](assets/screenshots/game.png)
+- lower melee pressure
+- ranged projectile option
+- better spacing potential
 
 ---
 
-## Technical Highlights
+## Controls
 
-- **SceneManager** drives navigation between `menu`, `controls`, `setup`, `game`, and `victory`
-- **SceneResult** gives a clean contract for transitions and quitting
-- **FSM-based fighters** manage attack states, hitstun, respawn, and recovery
-- **Combat phases** are explicit instead of hidden in monolithic update code
-- **Projectile spawning** is isolated from input queuing
-- **Respawn logic** resets fighters while preserving stock-based match flow
-- **Effects modules** improve game feel without polluting core combat logic
+### Player 1 (AZERTY)
+- `Q` / `D` -> Move
+- `Z` -> Jump
+- `S` -> Fast fall
+- `F` -> Melee
+- `G` -> Ranged
+
+### Player 2
+- `Left` / `Right` -> Move
+- `Up` -> Jump
+- `Down` -> Fast fall
+- `Enter` -> Melee
+- `Right Shift` -> Ranged
+
+### In match
+- `Esc` -> Pause / resume
 
 ---
 
-## Architecture
+## Technical highlights
 
-### High-level flow
+### 1. Scene-driven architecture
+
+The game flow is modeled explicitly through scenes instead of being hidden inside one oversized runtime loop.
+
+Main transitions:
+- `menu`
+- `controls`
+- `setup`
+- `game`
+- `victory`
+
+This makes navigation logic easier to reason about, easier to test, and easier to extend.
+
+### 2. FSM-based fighters
+
+Fighters are organized around explicit state transitions rather than loose boolean flags.
+
+Examples of runtime states include:
+- idle
+- run
+- jump
+- melee startup / active / recovery
+- ranged startup / recovery
+- hitstun
+- dead
+- respawn
+
+This gives the combat layer clearer contracts and makes future extensions significantly more maintainable.
+
+### 3. Modular gameplay systems
+
+The repository separates:
+- scene management
+- fighter entities
+- fighter states
+- combat logic
+- effects and feedback
+- UI helpers
+
+That separation reduces coupling and prevents gameplay code from collapsing into a single monolithic file.
+
+### 4. Verifiable quality
+
+This project is not just playable; it is testable.
+
+The repository includes:
+- automated tests
+- integration-oriented match-flow checks
+- Ruff linting
+- GitHub Actions CI
+- coverage reporting
+
+That matters because gameplay systems are easy to break when iteration accelerates.
+
+---
+
+## Architecture overview
+
+### Runtime flow
 
 ```text
 Input
-  -> Scene / Fighter input handling
+  -> Scene update
+  -> Fighter input interpretation
   -> State machine transitions
   -> Combat resolution
   -> Effects triggering
   -> Rendering
 ```
 
-### Main architectural components
+### Main modules
 
-#### `core/`
-Shared scene abstractions and orchestration primitives.
+#### `src/stick_duel/core/`
+Core orchestration primitives:
+- scene abstractions
+- scene manager
+- timers
+- state machine helpers
 
-#### `scenes/`
-Top-level flow of the game:
+#### `src/stick_duel/scenes/`
+Top-level game flow:
 - menu
 - controls
-- setup
+- player setup
 - game
 - victory
 
-#### `entities/`
-Domain objects such as fighters and gameplay-relevant runtime state.
+#### `src/stick_duel/entities/`
+Gameplay entities and runtime data:
+- fighters
+- physics body
+- animation data
+- stats
+- input representation
 
-#### `fighter_states/`
-FSM states governing behavior transitions such as idle, run, attack, hitstun, dead, and respawn.
+#### `src/stick_duel/fighter_states/`
+State definitions and behavior transitions for fighters.
 
-#### `combat/`
-Collision, damage, and attack-specific mechanics.
+#### `src/stick_duel/combat/`
+Combat-specific logic:
+- attacks
+- collision
+- damage
+- projectile handling
 
-#### `effects/`
-Hit freeze, screen shake, impact particles, and related feedback systems.
+#### `src/stick_duel/effects/`
+Feedback systems:
+- hit freeze
+- screen shake
+- impact particles
 
-#### `ui/`
-Buttons, input widgets, HUD, and scene presentation helpers.
+#### `src/stick_duel/ui/`
+UI widgets and HUD rendering helpers.
 
 ---
 
-## Project Structure
+## Project structure
 
 ```text
 stick-duel/
+├── .github/
+│   └── workflows/
 ├── assets/
 ├── src/
 │   └── stick_duel/
@@ -228,8 +249,8 @@ stick-duel/
 │       ├── fighter_states/
 │       ├── scenes/
 │       ├── ui/
-│       ├── main.py
-│       └── game.py
+│       ├── game.py
+│       └── main.py
 ├── tests/
 ├── pyproject.toml
 ├── run_game.py
@@ -241,100 +262,125 @@ stick-duel/
 ## Installation
 
 ### Requirements
+- Python 3.11+
 
-- Python 3.11 or newer
-
-### Recommended installation
-
-Install the project as a package from the repository root:
+### Install locally
 
 ```bash
-pip install -e .
+pip install -e .[dev]
 ```
 
-This is the correct workflow for the current `src/` layout and is preferable to manually modifying `sys.path`.
+This installs the project in editable mode with development tooling.
 
 ---
 
-## Run the Game
+## Running the game
 
-After installation:
-
+### Entry script
 ```bash
 python run_game.py
 ```
 
-Alternative package-based launch:
-
+### Module entry
 ```bash
 python -m stick_duel.main
 ```
 
+### Console script
+```bash
+stick-duel
+```
+
 ---
 
-## Run the Tests
+## Testing
+
+Run the full test suite:
 
 ```bash
 pytest
 ```
 
-If you want a more explicit command with coverage:
+Run tests with coverage:
 
 ```bash
 pytest --cov=stick_duel --cov-report=term-missing
 ```
 
+Run linting:
+
+```bash
+ruff check .
+```
+
 ---
 
-## Release Notes
+## Continuous Integration
+
+GitHub Actions runs:
+- Ruff linting
+- automated tests
+- coverage-enabled test execution
+
+This helps catch gameplay regressions and structural issues early.
+
+---
+
+## Release notes
 
 ### v1.0.0 — Initial stable release
 
-This release includes:
-
-- playable local 1v1 combat
-- scene-based game loop
-- FSM-driven fighters
-- melee and ranged combat
-- hit detection and knockback
-- particle and screen feedback systems
-- initial automated tests
-- package-based installation workflow
+Includes:
+- local 1v1 combat
+- melee and ranged attacks
+- scene-driven game loop
+- FSM-based fighters
+- effects and feedback systems
+- package-based project structure
+- automated test suite
+- CI pipeline
 
 ---
 
 ## Roadmap
 
 ### Short term
-
-- strengthen automated tests
-- remove remaining debug traces from runtime code
-- add a complete release workflow
-- improve README visuals with real screenshots and a gameplay GIF
+- add gameplay GIF to README
+- strengthen match-level integration coverage
+- enrich HUD and visual polish
+- remove remaining runtime debug traces
 
 ### Mid term
-
-- richer combat depth
-- better animation polish
-- sound design integration
-- refined HUD and match feedback
+- improve animation polish
+- add sound integration
+- deepen character differentiation
+- refine balancing and combat tuning
 
 ### Long term
-
 - AI opponent
-- multiple arenas
-- combat balancing
-- deeper move sets
-- optional online or remote-play friendly architecture
+- additional arenas
+- more advanced combat interactions
+- optional tournament / versus extensions
 
 ---
 
-## Known Limitations
+## Known limitations
 
-- Local multiplayer only
-- No AI opponent yet
-- Limited content compared with a full game release
-- Repository still benefits from stronger CI and richer integration tests
+- local multiplayer only
+- no AI opponent yet
+- limited content scope compared with a full game release
+- visuals are functional but not yet production-grade
+
+---
+
+## Portfolio value
+
+This repository is meant to be useful for two audiences:
+
+- someone who wants to try the game
+- someone evaluating code quality, modularity, and engineering decisions
+
+It should be read as a **playable fighting game prototype with a deliberately serious codebase**, not as a quick one-file Pygame demo.
 
 ---
 

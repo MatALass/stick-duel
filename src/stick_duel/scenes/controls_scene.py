@@ -2,7 +2,18 @@ from __future__ import annotations
 
 import pygame
 
-from stick_duel.constants import BG_BOTTOM, BG_TOP, BLUE, DARK_PANEL, HEIGHT, PLAYER_1_COLOR, PLAYER_2_COLOR, SOFT_TEXT, WHITE, WIDTH
+from stick_duel.constants import (
+    BG_BOTTOM,
+    BG_TOP,
+    BLUE,
+    DARK_PANEL,
+    HEIGHT,
+    PLAYER_1_COLOR,
+    PLAYER_2_COLOR,
+    SOFT_TEXT,
+    WHITE,
+    WIDTH,
+)
 from stick_duel.core.scene import Scene, SceneResult
 from stick_duel.ui.button import Button
 

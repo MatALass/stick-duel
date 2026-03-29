@@ -5,7 +5,6 @@ import pygame
 
 from stick_duel.constants import GREEN, HUD_BG, HUD_EDGE, RED, SOFT_TEXT, WHITE
 
-
 DOT_SPACING = 18
 DOT_RADIUS = 6
 

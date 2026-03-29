@@ -4,7 +4,18 @@ from __future__ import annotations
 import pygame
 
 from stick_duel.combat.collision import intersects
-from stick_duel.constants import BG_BOTTOM, BG_TOP, GROUND_FILL, GROUND_LINE, GROUND_Y, HEIGHT, ORANGE, SOFT_TEXT, WHITE, WIDTH
+from stick_duel.constants import (
+    BG_BOTTOM,
+    BG_TOP,
+    GROUND_FILL,
+    GROUND_LINE,
+    GROUND_Y,
+    HEIGHT,
+    ORANGE,
+    SOFT_TEXT,
+    WHITE,
+    WIDTH,
+)
 from stick_duel.core.scene import Scene, SceneResult
 from stick_duel.effects.impact import HitFreeze, ImpactParticles, ScreenShake
 from stick_duel.entities.fighter import Fighter

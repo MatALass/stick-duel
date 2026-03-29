@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import pygame
 
 from stick_duel.config import ASSETS_DIR

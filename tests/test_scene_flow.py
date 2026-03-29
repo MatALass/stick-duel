@@ -11,7 +11,6 @@ from stick_duel.scenes.game_scene import GameScene
 from stick_duel.scenes.menu_scene import MenuScene
 from stick_duel.scenes.player_setup_scene import PlayerSetupScene
 from stick_duel.scenes.victory_scene import VictoryScene
-
 from tests.test_helpers import DummyGame
 
 
