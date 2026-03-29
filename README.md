@@ -1,5 +1,6 @@
 # Stick Duel
 
+[![CI](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml/badge.svg)](https://github.com/MatALass/stick-duel/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](#installation)
 [![Pygame](https://img.shields.io/badge/pygame-2.6%2B-green.svg)](#installation)
 [![Status](https://img.shields.io/badge/status-playable-success.svg)](#features)

@@ -1,13 +1,29 @@
 [project]
 name = "stick-duel"
 version = "0.1.0"
-description = "Local multiplayer fighting game built with Pygame"
-authors = [{ name = "Mathieu" }]
+description = "Local 1v1 fighting game built with Pygame and structured with a modular architecture."
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Mathieu" }
+]
+license = { file = "LICENSE" }
 dependencies = [
     "pygame>=2.6.0",
 ]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+stick-duel = "stick_duel.main:run"
 
 [build-system]
 requires = ["setuptools>=69"]
