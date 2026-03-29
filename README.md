@@ -154,7 +154,7 @@ This explicit scene-driven flow is one of the strong architectural points of the
 
 ![Menu](assets/screenshots/menu.png)
 ![Setup](assets/screenshots/setup.png)
-![Gameplay](assets/screenshots/gameplay.png)
+![Gameplay](assets/screenshots/game.png)
 
 ---
 
