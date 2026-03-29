@@ -152,21 +152,9 @@ This explicit scene-driven flow is one of the strong architectural points of the
 
 ## Screenshots and Demo
 
-Replace these placeholders with your actual assets when ready.
-
-```md
 ![Menu](assets/screenshots/menu.png)
 ![Setup](assets/screenshots/setup.png)
 ![Gameplay](assets/screenshots/gameplay.png)
-```
-
-Recommended addition for a premium repository:
-
-```md
-![Gameplay GIF](assets/gifs/stick-duel-gameplay.gif)
-```
-
-A short gameplay GIF will increase the portfolio value of the repository much more than static screenshots alone.
 
 ---
 
@@ -346,18 +334,6 @@ This release includes:
 - No AI opponent yet
 - Limited content compared with a full game release
 - Repository still benefits from stronger CI and richer integration tests
-
----
-
-## Repository Metadata
-
-### Recommended GitHub description
-
-> Modular 2D fighting game built with Pygame, featuring scene management, FSM-based characters, and a structured game architecture.
-
-### Recommended GitHub topics
-
-`pygame`, `game-dev`, `2d-game`, `fighting-game`, `python`, `game-architecture`, `finite-state-machine`, `fsm`, `software-engineering`, `portfolio-project`
 
 ---
 
